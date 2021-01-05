@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="static/style.css" />
+    <script src="//cdn.jsdelivr.net/npm/less@3.13" ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="chatbox">
+        <div class="top-bar">
+          <div class="name">ChatBot</div>
+          <div class="icons">
+            <i class="fas fa-phone"></i>
+            <i class="fas fa-video"></i>
+          </div>
+          <div class="menu">
+            <div class="dots"></div>
+          </div>
+        </div>
+        <div class="middle">
+          <div id="chat">
+            <div id="incoming" class="incoming">
+              <div class="bubble">Say something</div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <div class="chat">
+            <input type="text" id="textInput" placeholder="Type a message..." />
+            <button id="buttonInput" type="submit"><i class="fas fa-paper-plane"></i>></button>
+          </div>
+        </div>
+      </div>
+      <div class="messages"></div>
+      <div class="profile">
+        <div class="avatar"><p>B</p></div>
+        <div class="name2">Bot<p class="email">bot@iitu.kz</p></div>
+      </div>
+      <ul class="people">
+        <li class="person focus">
+          <span class="title">In English</span>
+          <span class="time">2:50pm</span><br>
+          <span class="preview">Say hello</span>
+        </li>
+         <li class="person">
+          <span class="title">Қазақша</span>
+          <span class="time">2:25pm</span><br>
+          <span class="preview">Сәлем деп жазыңыз</span>
+        </li>
+        <li class="person">
+          <span class="title">На русском</span>
+          <span class="time">2:12pm</span><br>
+          <span class="preview">Напишите привет</span>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+       $(".person").on('click', function(){
+          $(this).toggleClass('focus').siblings().removeClass('focus');
+       })
+      function getBotResponse() {
+        var rawText = $("#textInput").val();
+        var userHtml = '<div class="outgoing"><div class="bubble">' + rawText + '</div></div>'
+        $("#textInput").val("")
+        $("#chat").append(userHtml)
+        document.getElementById('chat').scrollIntoView({block: 'start', behavior: 'smooth'});
+        $.get("/bot", { msg: rawText }).done(function(data) {
+          var botHtml = '<div class="incoming"><div class="bubble">' + data + '</div></div>'
+          $("#chat").append(botHtml)
+          document.getElementById('chat').scrollIntoView({block: 'start', behavior: 'smooth'});
+        });
+      }
+      $("#textInput").keypress(function(e) {
+        if(e.which == 13) {
+          getBotResponse();
+        }
+      })
+      $("#buttonInput").click(function() {
+        getBotResponse();
+      })
+    </script>
+  </body>
+
+  <footer>
+    <p>made by <a href="https://codepen.io/juliepark"> julie</a> ♡
+  </footer>
+</html>
