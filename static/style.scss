@@ -185,6 +185,7 @@ body {
 
 .middle {
   position: absolute;
+  overflow: scroll;
   background: $white;
   width: 100%;
   opacity: 0.85;
@@ -193,7 +194,6 @@ body {
 }
 
 .incoming {
-  position: absolute;
   width: 50%;
   height: 100%;
   padding: 20px;
@@ -203,12 +203,7 @@ body {
 }
 
 .outgoing {
-  position: absolute;
-  padding: 20px;
-  right: 0;
-  top: 15%;
-  width: 50%;
-  height: 100%;
+  padding:0 20px 20px 0;
   .bubble {
     background: $primary;
     float: right;
@@ -265,7 +260,7 @@ body {
   position: absolute;
   width: 100%;
   height: 55px;
-  bottom: 0;
+  bottom: -35px;
   background: $white;
   border-radius: 0 0 10px 10px;
 }

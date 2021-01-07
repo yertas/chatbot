@@ -15,7 +15,7 @@ bot = ChatBot(
 
 def initialize():
 	trainer = ChatterBotCorpusTrainer(bot)
-	trainer.train('chatterbot.corpus.english')
+	# trainer.train('chatterbot.corpus.english')
 	trainer.train('chatterbot.corpus.kazakh')
 
 @app.route('/train')
@@ -33,9 +33,9 @@ def get_bot_response():
 
 
 if __name__ == '__main__':
-	# initialize()
+	initialize()
 	# casual_conv()
-	app.run()
+	app.run(host="0.0.0.0")
 
 
 def casual_conv():

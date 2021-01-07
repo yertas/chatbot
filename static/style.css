@@ -153,6 +153,7 @@ body {
 
 .middle {
   position: absolute;
+  overflow: scroll;
   background: #F9FBFF;
   width: 100%;
   opacity: 0.85;
@@ -160,7 +161,6 @@ body {
   height: 80%; }
 
 .incoming {
-  position: absolute;
   width: 50%;
   height: 100%;
   padding: 20px; }
@@ -168,12 +168,7 @@ body {
     background: #b2b2b2; }
 
 .outgoing {
-  position: absolute;
-  padding: 20px;
-  right: 0;
-  top: 15%;
-  width: 50%;
-  height: 100%; }
+  padding: 0 20px 20px 0; }
   .outgoing .bubble {
     background: #79C7C5;
     float: right; }
@@ -220,7 +215,7 @@ body {
   position: absolute;
   width: 100%;
   height: 55px;
-  bottom: 0;
+  bottom: -35px;
   background: #F9FBFF;
   border-radius: 0 0 10px 10px; }
 
